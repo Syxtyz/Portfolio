@@ -1,6 +1,6 @@
-import FooterContent from "./components/screens/footer"
-import { ModeToggle } from "./components/screens/mode-toggle"
-import LandingContent from "./components/screens/landing/main"
+import FooterContent from "./screens/footer"
+import { ModeToggle } from "./screens/mode-toggle"
+import LandingContent from "./screens/landing/main"
 import { ScrollArea } from "./components/ui/scroll-area"
 
 function App() {
@@ -8,8 +8,11 @@ function App() {
   return (
     <ScrollArea className="h-screen px-32">
       <LandingContent />
-      <ModeToggle/>
-      <FooterContent/>
+      <ModeToggle />
+      <FooterContent />
+      {/* Education Tour Journal with Photos
+      Certification
+      Tech Stack */}
     </ScrollArea>
   )
 }
