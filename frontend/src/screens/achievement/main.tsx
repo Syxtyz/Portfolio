@@ -2,6 +2,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import TechStackSection from "./techstack"
 import { useState } from "react"
 import CertificateSection from "./certificates"
+import JournalSection from "./journal"
 
 export default function AchievementContent() {
     const [open, setOpen] = useState("item-1")
@@ -18,17 +19,22 @@ export default function AchievementContent() {
 
 
                 <AccordionItem value="item-2">
-                    <AccordionTrigger  className={`text-lg font-semibold py-2 px-4 cursor-pointer ${open === "item-2" ? "opacity-100" : "opacity-50 hover:opacity-100"}`}>Certificates</AccordionTrigger>
+                    <AccordionTrigger className={`text-lg font-semibold py-2 px-4 cursor-pointer ${open === "item-2" ? "opacity-100" : "opacity-50 hover:opacity-100"}`}>Certificates</AccordionTrigger>
                     <AccordionContent>
-                        <CertificateSection/>
+                        <CertificateSection />
                     </AccordionContent>
                 </AccordionItem>
 
 
                 <AccordionItem value="item-3">
-                    <AccordionTrigger className={`text-lg font-semibold py-2 px-4 cursor-pointer ${open === "item-3" ? "opacity-100" : "opacity-50 hover:opacity-100"}`}>Educational Tour / Journal</AccordionTrigger>
+                    <AccordionTrigger className={`py-2 px-4 cursor-pointer ${open === "item-3" ? "opacity-100" : "opacity-50 hover:opacity-100"}`}>
+                        <div>
+                            <p className="text-lg font-semibold">Educational Tour / Journal</p>
+                            <p className="text-sm text-muted-foreground">(An academic requirement for ADV103 - IT Elective 3)</p>
+                        </div>
+                    </AccordionTrigger>
                     <AccordionContent className="mt-2">
-                        Test
+                        <JournalSection />
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>

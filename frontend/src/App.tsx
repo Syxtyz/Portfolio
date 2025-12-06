@@ -11,20 +11,23 @@ function App() {
   const achievementRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <ScrollArea className="h-screen lg:px-32 px-6">
-      <AnimatePresence>
-        {!isReady && <SplashScreen onFinish={() => setIsReady(true)} />}
-        <LandingContent scrollToAchievement={() => achievementRef.current?.scrollIntoView({ behavior: "smooth" })} />
-        {/* <ModeToggle /> */}
-        <div ref={achievementRef}>
-          <AchievementContent />
-        </div>
-        <FooterContent />
-        {/* Education Tour Journal with Photos
+    <ScrollArea className="h-screen">
+      <div className="lg:px-32 px-6">
+        <AnimatePresence>
+          {!isReady && <SplashScreen onFinish={() => setIsReady(true)} />}
+          <LandingContent scrollToAchievement={() => achievementRef.current?.scrollIntoView({ behavior: "smooth" })} />
+          {/* <ModeToggle /> */}
+          <div ref={achievementRef}>
+            <AchievementContent />
+          </div>
+          <FooterContent />
+          {/* Education Tour Journal with Photos
       Certification
       Tech Stack */}
 
-      </AnimatePresence>
+        </AnimatePresence>
+
+      </div>
     </ScrollArea>
   )
 }

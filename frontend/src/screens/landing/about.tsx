@@ -19,7 +19,7 @@ export default function AboutSection() {
                 </p>
 
                 <p className="text-muted-foreground">
-                    Currently, I’m a <strong>3rd-year student</strong> pursuing a
+                    Currently, I’m a <strong>3rd-year student</strong> pursuing
                     <strong> Bachelor of Science in Information Technology</strong>, eager to apply my skills
                     in practical projects and continue expanding my knowledge in the field.
                 </p>

@@ -1,6 +1,6 @@
 import { Button } from "../ui/button";
 import { FacebookIcon, GithubIcon, MailIcon } from "lucide-react";
-import { FacebookLink, GithubLink } from "@/lib/links";
+import { FacebookLink, GithubLink } from "@/lib/values/links";
 
 interface MySocialProps {
     size?: "default" | "icon"
