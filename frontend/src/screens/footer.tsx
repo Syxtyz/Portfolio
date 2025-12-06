@@ -1,5 +1,6 @@
 import MySocials from "@/components/reusableUI/socials";
 import { Separator } from "../components/ui/separator";
+import { ModeToggle } from "./mode-toggle";
 
 export default function FooterContent() {
     return (
@@ -8,6 +9,7 @@ export default function FooterContent() {
             <div className="flex items-center justify-between mx-4">
                 <div className="flex">
                     <MySocials size="icon" variant="ghost" />
+                    <ModeToggle/>
                 </div>
                 <p className="text-sm text-muted-foreground">Copyright © Cejie Refamonte. All rights reserved</p>
             </div>

@@ -16,17 +16,11 @@ function App() {
         <AnimatePresence>
           {!isReady && <SplashScreen onFinish={() => setIsReady(true)} />}
           <LandingContent scrollToAchievement={() => achievementRef.current?.scrollIntoView({ behavior: "smooth" })} />
-          {/* <ModeToggle /> */}
           <div ref={achievementRef}>
             <AchievementContent />
           </div>
           <FooterContent />
-          {/* Education Tour Journal with Photos
-      Certification
-      Tech Stack */}
-
         </AnimatePresence>
-
       </div>
     </ScrollArea>
   )

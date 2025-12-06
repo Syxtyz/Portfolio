@@ -29,3 +29,8 @@ export const ResponseCenter = [
     "/journals/erc/response2.jpg",
     "/journals/erc/response3.png"
 ]
+
+export const PldtJournal = "/journals/watt/pldtJournal.png"
+export const VitroJournal = "/journals/watt/VitroJournal.png"
+export const JairosoftJournal = "/journals/watt/JairosoftJournal.png"
+export const ErcJournal = "/journals/watt/ercJournal.png"

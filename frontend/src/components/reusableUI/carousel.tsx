@@ -1,6 +1,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import type { ReactNode } from "react";
+import { useTheme } from "../ui/theme-provider";
 
 interface JournalCarouselProps {
     pictures: string[]
@@ -9,6 +10,7 @@ interface JournalCarouselProps {
 }
 
 export default function MyCarousel({ pictures, reverse = false, children }: JournalCarouselProps) {
+    const { theme } = useTheme()
     const [emblaRef] = useEmblaCarousel(
         {
             loop: true,
@@ -46,14 +48,13 @@ export default function MyCarousel({ pictures, reverse = false, children }: Jour
                     </div>
                 </div>
 
-                <div className="pointer-events-none absolute top-0 left-0 h-full w-16 bg-linear-to-r from-black to-transparent" />
+                <div className={`pointer-events-none absolute top-0 left-0 h-full w-16 bg-linear-to-r ${theme === "dark" ? "from-black" : "from-white"} to-transparent`} />
 
-                <div className="pointer-events-none absolute top-0 right-0 h-full w-16 bg-linear-to-l from-black to-transparent" />
+                <div className={`pointer-events-none absolute top-0 right-0 h-full w-16 bg-linear-to-l ${theme === "dark" ? "from-black" : "from-white"} to-transparent`} />
             </div>
-            <div className="flex-1 py-4 border-b md:border-none">
+            <div className="flex-1 py-4">
                 {children}
             </div>
-
         </div>
     );
 }

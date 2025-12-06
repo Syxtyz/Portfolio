@@ -8,7 +8,7 @@ export default function AchievementContent() {
     const [open, setOpen] = useState("item-1")
 
     return (
-        <main className="h-fit pb-12">
+        <main className="h-fit">
             <Accordion type="single" collapsible className="w-full" value={open} onValueChange={setOpen}>
                 <AccordionItem value="item-1">
                     <AccordionTrigger className={`text-lg font-semibold py-2 px-4 cursor-pointer ${open === "item-1" ? "opacity-100" : "opacity-50 hover:opacity-100"}`}>Tech Stack</AccordionTrigger>
@@ -33,7 +33,7 @@ export default function AchievementContent() {
                             <p className="text-sm text-muted-foreground">(An academic requirement for ADV103 - IT Elective 3)</p>
                         </div>
                     </AccordionTrigger>
-                    <AccordionContent className="mt-2">
+                    <AccordionContent>
                         <JournalSection />
                     </AccordionContent>
                 </AccordionItem>

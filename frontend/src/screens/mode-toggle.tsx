@@ -13,17 +13,13 @@ export function ModeToggle() {
 
   return (
     <Tooltip>
-      <TooltipTrigger asChild>
-        <Button variant="default" size={"icon-lg"} className="absolute bottom-0 left-0 rounded-tr-full border border-transparent hover:border-black dark:hover:border-white" onClick={toggleTheme}>
-          <Sun
-            className={`absolute bottom-1/5 left-1/5 ${theme === "light" ? "scale-100 rotate-0" : "scale-0 -rotate-90"
-              }`}
-          />
-          <Moon
-            className={`absolute bottom-1/5 left-1/5 ${theme === "dark" ? "scale-100 rotate-0" : "scale-0 rotate-90"
-
-              }`}
-          />
+      <TooltipTrigger>
+        <Button variant="ghost" size={"icon"} onClick={toggleTheme} className="cursor-pointer">
+          {theme === "dark" ? (
+            <Moon />
+          ) : (
+            <Sun />
+          )}
         </Button>
       </TooltipTrigger>
       <TooltipContent>

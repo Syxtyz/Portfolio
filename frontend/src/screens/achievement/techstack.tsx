@@ -25,7 +25,7 @@ export default function TechStackSection() {
                 <CardTitle className="text-sm font-semibold">Backend</CardTitle>
                 <Separator />
                 <CardContent className="flex flex-wrap gap-4 justify-center">
-                    <MyToolTip content="Django"><TbBrandDjango className="w-8 h-8" /></MyToolTip>
+                    <MyToolTip content="Django"><TbBrandDjango className="w-8 h-8 text-green-900" /></MyToolTip>
                     <MyToolTip content="Bun"><SiBun className="w-8 h-8" /></MyToolTip>
                 </CardContent>
             </Card>
@@ -37,7 +37,7 @@ export default function TechStackSection() {
                     <MyToolTip content="CSS"><TbBrandCss3 className="w-8 h-8 text-blue-400" /></MyToolTip>
                     <MyToolTip content="TailwindCSS"><SiTailwindcss className="w-8 h-8 text-teal-400" /></MyToolTip>
                     <MyToolTip content="MUI"><SiMui className="w-8 h-8 text-blue-500" /></MyToolTip>
-                    <MyToolTip content="Shadcn/UI"><SiShadcnui className="w-8 h-8 bg-black p-1 rounded" /></MyToolTip>
+                    <MyToolTip content="Shadcn/UI"><SiShadcnui className="w-8 h-8 bg-neutral-200 dark:bg-black p-1 rounded" /></MyToolTip>
                     <MyToolTip content="React Icons"><SiReact className="w-8 h-8 text-red-400" /></MyToolTip>
                     <MyToolTip content="Framer Motion"><SiFramer className="w-8 h-8 text-pink-500" /></MyToolTip>
                 </CardContent>
@@ -48,7 +48,7 @@ export default function TechStackSection() {
                 <Separator />
                 <CardContent className="flex flex-wrap gap-4 justify-center">
                     <MyToolTip content="MySQL"><SiMysql className="w-8 h-8" /></MyToolTip>
-                    <MyToolTip content="Firebase"><SiFirebase className="w-8 h-8" /></MyToolTip>
+                    <MyToolTip content="Firebase"><SiFirebase className="w-8 h-8 text-orange-500" /></MyToolTip>
                 </CardContent>
             </Card>
 
@@ -60,8 +60,8 @@ export default function TechStackSection() {
                     <MyToolTip content="Git"><SiGit className="w-8 h-8 text-orange-600" /></MyToolTip>
                     <MyToolTip content="Wireshark"><SiWireshark className="w-8 h-8" /></MyToolTip>
                     <MyToolTip content="Java"><FaJava className="w-8 h-8" /></MyToolTip>
-                    <MyToolTip content="C++"><SiCplusplus className="w-8 h-8" /></MyToolTip>
-                    <MyToolTip content="C#"><TbBrandCSharp className="w-8 h-8" /></MyToolTip>
+                    <MyToolTip content="C++"><SiCplusplus className="w-8 h-8 text-blue-400" /></MyToolTip>
+                    <MyToolTip content="C#"><TbBrandCSharp className="w-8 h-8 text-purple-400" /></MyToolTip>
                     <MyToolTip content="Python"><TbBrandPython className="w-8 h-8 text-blue-400" /></MyToolTip>
                 </CardContent>
             </Card>
