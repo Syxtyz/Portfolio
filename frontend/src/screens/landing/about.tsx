@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator"
 export default function AboutSection() {
     return (
         <div className="flex flex-col gap-6 flex-2">
-            <section className="grid gap-6 text-center lg:text-left">
+            <section className="grid gap-4 text-center lg:text-left">
 
                 <p className="text-2xl font-bold text-primary">About me</p>
                 <p className="text-muted-foreground">
@@ -27,20 +27,16 @@ export default function AboutSection() {
 
             <Separator />
 
-            <section className="grid gap-6 text-center lg:text-left">
-                <p className="text-2xl font-bold text-primary">Ready to work together?</p>
+            <section className="grid gap-4 text-center lg:text-left">
+                <p className="text-2xl font-bold text-primary">Socials</p>
 
-                <p className="text-muted-foreground">
-                    Whether you have a project idea, need help with web or mobile development,
-                    or just want to collaborate on something exciting—I'm always open to new opportunities.
-                    Let’s connect and create something amazing together!
-                </p>
-
-                <div className="grid sm:flex gap-4 items-center justify-center lg:justify-start">
+                <div className="grid gap-2">
                     <p className="text-muted-foreground whitespace-nowrap">
-                        Let’s connect!
+                        Open any of my social profiles below to connect, follow, or get in touch.
                     </p>
-                    <MySocials/>
+                    <div className="flex gap-4">
+                        <MySocials />
+                    </div>
                 </div>
             </section>
         </div>
