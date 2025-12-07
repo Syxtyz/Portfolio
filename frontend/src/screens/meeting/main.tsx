@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
 
 export default function MeetingContent() {
     return (
@@ -11,7 +10,6 @@ export default function MeetingContent() {
                 </div>
                 <Button variant={"outline"} className="cursor-pointer">
                     <p>Book a Meeting</p>
-                    <ArrowUpRight />
                 </Button>
             </div>
         </main>
