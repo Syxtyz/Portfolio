@@ -1,10 +1,10 @@
-import FooterContent from "./screens/footer"
-import LandingContent from "./screens/landing/main"
+import FooterContent from "./components/footer/footer"
+import LandingContent from "./components/landing/main"
 import { ScrollArea } from "./components/ui/scroll-area"
-import AchievementContent from "./screens/achievement/main"
+import AchievementContent from "./components/achievement/main"
 import { useRef, useState } from "react"
-import { SplashScreen } from "./screens/splash"
-import MeetingContent from "./screens/meeting/main"
+import { SplashScreen } from "./components/splash/splash"
+import MeetingContent from "./components/contact/main"
 function App() {
   const [isReady, setIsReady] = useState(false)
   const achievementRef = useRef<HTMLDivElement | null>(null)

@@ -1,6 +1,6 @@
 import MySocials from "@/components/reusableUI/socials";
-import { Separator } from "../components/ui/separator";
-import { ModeToggle } from "./mode-toggle";
+import { Separator } from "../ui/separator";
+import { ModeToggle } from "../theme/mode-toggle";
 
 export default function FooterContent() {
     return (
