@@ -25,7 +25,7 @@ export default function AboutSection() {
                 </p>
             </section>
 
-            <Separator />
+            <Separator className="mx-2 md:mx-0"/>
 
             <section className="grid gap-4 text-center lg:text-left">
                 <p className="text-2xl font-bold text-primary">Socials</p>
@@ -35,7 +35,7 @@ export default function AboutSection() {
                         Open any of my social profiles below to connect, follow, or get in touch.
                     </p>
                     <div className="flex justify-center md:justify-normal">
-                        <MySocials />
+                        <MySocials/>
                     </div>
                 </div>
             </section>

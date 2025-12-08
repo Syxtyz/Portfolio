@@ -5,11 +5,12 @@ import { FacebookLink, GithubLink, InstagramLink, LinkedinLink } from "@/lib/val
 interface MySocialProps {
     size?: "default" | "icon"
     variant?: "outline" | "default" | "secondary" | "ghost" | "link"
+    isFooter?: boolean
 }
 
-export default function MySocials({ size = "default", variant = "link"}: MySocialProps) {
+export default function MySocials({ size = "default", variant = "link", isFooter = false}: MySocialProps) {
     return (
-        <div className="grid grid-cols-2 grid-rows-2 md:flex gap-8 md:gap-0">
+        <div className={`${isFooter ? "flex" : "grid grid-cols-2 grid-rows-2 md:flex gap-8 md:gap-0"}`}>
             <Button size={size} variant={variant} className="flex gap-2 cursor-pointer" onClick={() => window.open(InstagramLink, "_blank")}>
                 <InstagramIcon size={16} />
                 {variant === "link" && "Instagram"}

@@ -8,7 +8,7 @@ export default function FooterContent() {
             <Separator orientation="horizontal" />
             <div className="flex items-center flex-col md:flex-row gap-2 justify-between mx-4">
                 <div className="flex">
-                    <MySocials size="icon" variant="ghost" />
+                    <MySocials size="icon" variant="ghost" isFooter={true}/>
                     <ModeToggle/>
                 </div>
                 <p className="text-sm text-muted-foreground text-center">Copyright © Cejie Refamonte. All rights reserved</p>

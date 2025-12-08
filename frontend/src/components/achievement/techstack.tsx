@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator"
 export default function TechStackSection() {
     return (
         <>
-            <Card className="flex-1 min-w-[220px] items-center px-2">
+            <Card className="flex-1 min-w-[220px] items-center px-2 mx-2 md:mx-0">
                 <CardTitle className="text-sm font-semibold">Frontend</CardTitle>
                 <Separator />
                 <CardContent className="flex flex-wrap gap-4 justify-center">
@@ -21,7 +21,7 @@ export default function TechStackSection() {
                 </CardContent>
             </Card>
 
-            <Card className="flex-1 min-w-[220px] items-center px-2">
+            <Card className="flex-1 min-w-[220px] items-center px-2 mx-2 md:mx-0">
                 <CardTitle className="text-sm font-semibold">Backend</CardTitle>
                 <Separator />
                 <CardContent className="flex flex-wrap gap-4 justify-center">
@@ -30,10 +30,10 @@ export default function TechStackSection() {
                 </CardContent>
             </Card>
 
-            <Card className="flex-1 min-w-[220px] items-center px-2">
+            <Card className="flex-1 min-w-[220px] items-center px-2 mx-2 md:mx-0">
                 <CardTitle className="text-sm font-semibold">UI/UX</CardTitle>
                 <Separator />
-                <CardContent className="flex flex-wrap gap-4 justify-center">
+                <CardContent className="flex flex-wrap gap-4 justify-center mx-2 md:mx-0">
                     <MyToolTip content="CSS"><TbBrandCss3 className="w-8 h-8 text-blue-400" /></MyToolTip>
                     <MyToolTip content="TailwindCSS"><SiTailwindcss className="w-8 h-8 text-teal-400" /></MyToolTip>
                     <MyToolTip content="MUI"><SiMui className="w-8 h-8 text-blue-500" /></MyToolTip>
@@ -43,7 +43,7 @@ export default function TechStackSection() {
                 </CardContent>
             </Card>
 
-            <Card className="flex-1 min-w-[220px] items-center px-2">
+            <Card className="flex-1 min-w-[220px] items-center px-2 mx-2 md:mx-0">
                 <CardTitle className="text-sm font-semibold">Databases / Services</CardTitle>
                 <Separator />
                 <CardContent className="flex flex-wrap gap-4 justify-center">
@@ -52,7 +52,7 @@ export default function TechStackSection() {
                 </CardContent>
             </Card>
 
-            <Card className="flex-1 min-w-[220px] items-center px-2">
+            <Card className="flex-1 min-w-[220px] items-center px-2 mx-2 md:mx-0">
                 <CardTitle className="text-sm font-semibold">Tools / Programming Languages</CardTitle>
                 <Separator />
                 <CardContent className="flex flex-wrap gap-4 justify-center">
