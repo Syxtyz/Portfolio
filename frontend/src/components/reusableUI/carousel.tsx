@@ -27,7 +27,7 @@ export default function MyCarousel({ pictures, reverse = false, children }: Jour
     );
 
     return (
-        <div className={`px-4 flex flex-col md:flex-row md:gap-6`}>
+        <div className={`px-4 flex flex-col lg:flex-row md:gap-6`}>
             <div className="relative w-fit self-center">
                 <div className="embla w-140">
                     <div className="embla__viewport overflow-hidden" ref={emblaRef}>

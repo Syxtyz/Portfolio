@@ -7,21 +7,20 @@ export default function AboutSection() {
             <section className="grid gap-4 text-center lg:text-left">
 
                 <p className="text-2xl font-bold text-primary">About me</p>
-                <p className="text-muted-foreground text-justify mx-2 md:mx-0 md:text-left">
-                    I am a passionate explorer of <strong>technology</strong>. Whether it is building
-                    <strong> web apps</strong>, <strong>mobile apps</strong>, or diving into
-                    <strong> networking</strong>, I love exploring new technologies and turning ideas into reality.
+                <p className="opacity-80 text-justify mx-2 md:mx-0 md:text-left">
+                    I am a passionate explorer of technology. Whether it is building web apps, desktop/mobile apps, or diving into networking, I love exploring new technologies and turning ideas into reality.
                 </p>
 
-                <p className="text-muted-foreground text-justify mx-2 md:mx-0 md:text-left">
-                    I thrive on exploring the latest <strong>tools</strong>, <strong>frameworks</strong>,
-                    and <strong>protocols</strong>, always looking for ways to challenge myself and grow.
+                <p className="opacity-80 text-justify mx-2 md:mx-0 md:text-left">
+                    I thrive on exploring the latest tools, frameworks, and protocols, always looking for ways to challenge myself and grow.
                 </p>
 
-                <p className="text-muted-foreground text-justify mx-2 md:mx-0 md:text-left">
-                    Currently, I’m a <strong>3rd-year student</strong> pursuing
-                    <strong> Bachelor of Science in Information Technology</strong>, eager to apply my skills
-                    in practical projects and continue expanding my knowledge in the field.
+                <p className="opacity-80 text-justify mx-2 md:mx-0 md:text-left">
+                    Currently, I’m a 3rd-year student pursuing Bachelor of Science in Information Technology, eager to apply my skills in practical projects and continue expanding my knowledge in the field.
+                </p>
+
+                <p className="opacity-80 text-justify mx-2 md:mx-0 md:text-left">
+                    At the moment, I am focused on learning Next.js and actively seeking mentorship to accelerate my learning journey.
                 </p>
             </section>
 
@@ -31,7 +30,7 @@ export default function AboutSection() {
                 <p className="text-2xl font-bold text-primary">Socials</p>
 
                 <div className="grid gap-2">
-                    <p className="text-muted-foreground text-justify mx-2 md:mx-0 md:text-left">
+                    <p className="opacity-80 text-justify mx-2 md:mx-0 md:text-left">
                         Open any of my social profiles below to connect, follow, or get in touch.
                     </p>
                     <div className="flex justify-center md:justify-normal">

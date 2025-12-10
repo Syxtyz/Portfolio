@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function LandingContent({ scrollToAchievement }: { scrollToAchievement: () => void }) {
     return (
         <main className="min-h-screen grid items-center justify-center pt-12">
-            <div className="flex flex-col lg:flex-row gap-8 md:gap-12 max-w-5xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-32 max-w-5xl mx-auto">
                 <HeroSection />
 
                 <AboutSection />

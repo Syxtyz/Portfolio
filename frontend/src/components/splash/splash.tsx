@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Predeparture, PLDT, Vikings, Jairosoft, ResponseCenter, PldtJournal, VitroJournal, JairosoftJournal, ErcJournal } from "@/lib/values/journalPics";
+import { imageCache, markAssetsPreloaded } from "@/lib/caches/images";
 
 export function SplashScreen({ onFinish }: { onFinish: () => void }) {
     const [step, setStep] = useState(0)
@@ -33,7 +34,6 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
     useEffect(() => {
         if (loadedCount >= allImages.length) {
             const firstText = "Done Loading Assets"
-            const secondText = "Welcome"
 
             let index = 0
             let interval: any
@@ -50,13 +50,6 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
                             setTypedText(firstText.slice(0, eraseIndex))
                             if (eraseIndex === 0) {
                                 clearInterval(interval)
-                                let wIndex = 0
-                                interval = setInterval(() => {
-                                    setTypedText(secondText.slice(0, wIndex + 1))
-                                    wIndex++
-                                    if (wIndex === secondText.length)
-                                        clearInterval(interval)
-                                }, 80)
                             }
                         }, 40)
                     }, 1000)
@@ -75,7 +68,12 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
             const img = new Image()
             img.src = src
             img.onload = img.onerror = () => {
-                setLoadedCount((c) => c + 1)
+                imageCache.set(src, img)
+                setLoadedCount((c) => {
+                    const next = c + 1
+                    if (next === allImages.length) markAssetsPreloaded()
+                    return next
+                })
             }
         })
     }, [allImages])
@@ -101,7 +99,6 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
                 }
             }, 5600)
         )
-
         return () => timers.forEach((t) => clearTimeout(t))
     }, [loadedCount, onFinish, allImages.length])
 
@@ -144,16 +141,21 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 1 }}
-                            className="cursor-pointer absolute bottom-12 px-4 py-2 rounded-lg bg-white/10 text-white border border-white/20 hover:bg-white/20 transition"
+                            className="cursor-pointer absolute bottom-16 px-4 py-1 rounded-lg text-white border-white/20 hover:bg-white/20 transition"
                         >
-                            Skip
+                            Waiting too long? Click me to skip
                         </motion.button>
                     )}
 
-                    <div className="absolute bottom-4 text-muted-foreground text-xl">
-                        {loadedCount >= allImages.length
-                            ? typedText
-                            : `Loading Assets (${loadedCount}/${allImages.length})`}
+                    <div className="absolute bottom-4 text-muted-foreground text-center grid">
+                        <p>
+                            {loadedCount >= allImages.length
+                                ? typedText
+                                : `Loading Assets (${loadedCount}/${allImages.length})`}
+                        </p>
+                        <p className="text-xs">
+                            {loadedCount < allImages.length && "Optimizing assets for smooth performance"}
+                        </p>
                     </div>
                 </motion.div>
             )}

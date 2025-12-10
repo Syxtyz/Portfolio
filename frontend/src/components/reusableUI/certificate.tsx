@@ -1,6 +1,9 @@
-import { AwardIcon, X } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
-import { useState, useEffect } from "react"
+import { AwardIcon, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { Button } from "../ui/button";
+import { Skeleton } from "../ui/skeleton";
+import { assetsPreloaded, imageCache } from "@/lib/caches/images";
 
 interface CertificateProps {
     title: string
@@ -12,7 +15,28 @@ interface CertificateProps {
 export function CertificateForm({ title, certificate, date, imageSrc }: CertificateProps) {
     const [hovered, setHovered] = useState(false)
     const [openMobile, setOpenMobile] = useState(false)
-    const [width, setWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 0)
+    const [loading, setLoading] = useState(() => {
+        if (!imageSrc) return false
+        return !(assetsPreloaded && imageCache.has(imageSrc))
+    })
+
+    useEffect(() => {
+        if (!imageSrc) return
+        if (assetsPreloaded) {
+            const cached = imageCache.get(imageSrc)
+            if (cached) {
+                setLoading(false)
+                return
+            }
+        }
+        setLoading(true)
+    }, [imageSrc])
+
+    if (!imageSrc) return null
+
+    const [width, setWidth] = useState(
+        typeof window !== "undefined" ? window.innerWidth : 0
+    )
 
     useEffect(() => {
         const handleResize = () => setWidth(window.innerWidth)
@@ -35,16 +59,20 @@ export function CertificateForm({ title, certificate, date, imageSrc }: Certific
                 </div>
 
                 {imageSrc && (
-                    <div
-                        className="flex gap-2 w-fit px-2 py-1 rounded-lg items-center cursor-pointer md:cursor-default"
-                        onClick={() => isMobile && setOpenMobile(true)}
+                    <Button
+                        variant={`${isMobile ? "outline" : "ghost"}`}
+                        className="w-fit cursor-pointer hover:bg-accent md:dark:hover:bg-accent/0"
+                        onClick={() => {
+                            if (isMobile) {
+                                setOpenMobile(true)
+                            }
+                        }}
                     >
                         <AwardIcon size={16} /> View Certificate
-                    </div>
-
+                    </Button>
                 )}
 
-                <p className="mb-6 text-xs text-muted-foreground last">Date issued: {date}</p>
+                <p className="mb-6 text-xs text-muted-foreground">Date issued: {date}</p>
             </div>
 
             <AnimatePresence>
@@ -56,7 +84,19 @@ export function CertificateForm({ title, certificate, date, imageSrc }: Certific
                         transition={{ type: "spring", stiffness: 260, damping: 28 }}
                         className="fixed top-0 right-0 h-screen w-120 z-50 hidden md:flex items-center mx-16"
                     >
-                        <img src={imageSrc} className="rounded-lg shadow-xl" />
+                        <div className="relative w-full">
+
+                            {loading && (
+                                <Skeleton className="w-full h-[600px] rounded-lg shadow-xl" />
+                            )}
+
+                            <img
+                                src={imageSrc}
+                                onLoad={() => setLoading(false)}
+                                className={`transition-opacity duration-300 rounded-lg shadow-xl ${loading ? "opacity-0" : "opacity-100"
+                                    }`}
+                            />
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -69,6 +109,7 @@ export function CertificateForm({ title, certificate, date, imageSrc }: Certific
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.25 }}
                         className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4 md:hidden"
+                        onClick={() => setOpenMobile(false)}
                     >
                         <motion.div
                             initial={{ y: 40, opacity: 0 }}
@@ -76,15 +117,27 @@ export function CertificateForm({ title, certificate, date, imageSrc }: Certific
                             exit={{ y: 40, opacity: 0 }}
                             transition={{ type: "spring", stiffness: 200, damping: 20 }}
                             className="relative w-full max-w-md"
+                            onClick={(e) => e.stopPropagation()}
                         >
                             <button
                                 onClick={() => setOpenMobile(false)}
-                                className="absolute -top-4 -right-4 bg-white text-black rounded-full p-2 shadow-md"
+                                className="absolute -top-4 -right-4 bg-white text-black rounded-full p-2 shadow-md z-1"
                             >
                                 <X size={20} />
                             </button>
 
-                            <img src={imageSrc} className="rounded-lg shadow-lg w-full" />
+                            <div className="relative w-full">
+                                {loading && (
+                                    <Skeleton className="w-full h-1/2 rounded-lg shadow-lg" />
+                                )}
+
+                                <img
+                                    src={imageSrc}
+                                    className={`rounded-lg shadow-lg w-full transition-opacity duration-300 ${loading ? "opacity-0" : "opacity-100"
+                                        }`}
+                                    onLoad={() => setLoading(false)}
+                                />
+                            </div>
                         </motion.div>
                     </motion.div>
                 )}
