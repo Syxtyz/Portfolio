@@ -4,11 +4,12 @@ import { Predeparture, PLDT, Vikings, Jairosoft, ResponseCenter, PldtJournal, Vi
 import { imageCache, markAssetsPreloaded } from "@/lib/caches/images";
 
 export function SplashScreen({ onFinish }: { onFinish: () => void }) {
-    const [step, setStep] = useState(0)
-    const [loadedCount, setLoadedCount] = useState(0)
-    const [typedText, setTypedText] = useState("")
-    const [showSkip, setShowSkip] = useState(false)
-    const loadedRef = useRef(false)
+    const [loadedCount, setLoadedCount] = useState(0);
+    const [showSkip, setShowSkip] = useState(false);
+    const [videoStarted, setVideoStarted] = useState(false);
+    const [videoEnded, setVideoEnded] = useState(false);
+    const loadedRef = useRef(false);
+
     const allImages = [
         ...Predeparture,
         ...PLDT,
@@ -19,91 +20,42 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
         VitroJournal,
         JairosoftJournal,
         ErcJournal
-    ]
+    ];
 
     useEffect(() => {
-        const t = setTimeout(() => setShowSkip(true), 3000)
-        return () => clearTimeout(t)
-    }, [])
+        const t = setTimeout(() => setShowSkip(true), 3000);
+        return () => clearTimeout(t);
+    }, []);
 
     const handleSkip = () => {
-        setStep(4)
-        window.setTimeout(onFinish, 100)
-    }
+        setVideoEnded(true);
+        setTimeout(onFinish, 100);
+    };
 
     useEffect(() => {
-        if (loadedCount >= allImages.length) {
-            const firstText = "Done Loading Assets"
-
-            let index = 0
-            let interval: any
-
-            interval = setInterval(() => {
-                setTypedText(firstText.slice(0, index + 1))
-                index++
-                if (index === firstText.length) {
-                    clearInterval(interval)
-                    setTimeout(() => {
-                        let eraseIndex = firstText.length
-                        interval = setInterval(() => {
-                            eraseIndex--
-                            setTypedText(firstText.slice(0, eraseIndex))
-                            if (eraseIndex === 0) {
-                                clearInterval(interval)
-                            }
-                        }, 40)
-                    }, 1000)
-                }
-            }, 90)
-
-            return () => clearInterval(interval)
-        }
-    }, [loadedCount, allImages.length])
-
-    useEffect(() => {
-        if (loadedRef.current) return
-        loadedRef.current = true
+        if (loadedRef.current) return;
+        loadedRef.current = true;
 
         allImages.forEach((src) => {
-            const img = new Image()
-            img.src = src
+            const img = new Image();
+            img.src = src;
             img.onload = img.onerror = () => {
-                imageCache.set(src, img)
+                imageCache.set(src, img);
                 setLoadedCount((c) => {
-                    const next = c + 1
-                    if (next === allImages.length) markAssetsPreloaded()
-                    return next
-                })
-            }
-        })
-    }, [allImages])
-
-    useEffect(() => {
-        const timers: number[] = []
-        timers.push(window.setTimeout(() => setStep(1), 100))
-        timers.push(window.setTimeout(() => setStep(2), 3500))
-        timers.push(
-            window.setTimeout(() => {
-                if (loadedCount >= allImages.length) {
-                    setStep(4)
-                    window.setTimeout(onFinish, 100)
-                } else {
-                    const check = setInterval(() => {
-                        if (loadedCount >= allImages.length) {
-                            clearInterval(check)
-                            setStep(4)
-                            onFinish()
-                        }
-                    }, 100)
-                }
-            }, 3600)
-        )
-        return () => timers.forEach((t) => clearTimeout(t))
-    }, [loadedCount, onFinish, allImages.length])
+                    const next = c + 1;
+                    if (next === allImages.length) {
+                        markAssetsPreloaded();
+                        setVideoStarted(true);
+                    }
+                    return next;
+                });
+            };
+        });
+    }, [allImages]);
 
     return (
         <AnimatePresence>
-            {step < 3 && (
+            {!videoEnded && (
                 <motion.div
                     key="splash"
                     initial={{ opacity: 1 }}
@@ -111,17 +63,27 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
                     exit={{ opacity: 0 }}
                     className="fixed inset-0 flex flex-col items-center justify-center z-50 bg-black"
                 >
-                    {step === 1 && (
+                    {!videoStarted && (
+                        <div className="text-white text-center">
+                            <p>{`Loading Assets (${loadedCount}/${allImages.length})`}</p>
+                            <p className="text-xs text-muted-foreground">
+                                Optimizing assets for smooth performance
+                            </p>
+                        </div>
+                    )}
+
+                    {videoStarted && (
                         <video
                             src="/cateyes.mp4"
                             autoPlay
                             muted
                             playsInline
+                            onEnded={() => setVideoEnded(true)}
                             className="object-contain h-screen w-screen"
                         />
                     )}
 
-                    {showSkip && loadedCount !== allImages.length && (
+                    {showSkip && !videoStarted && loadedCount < allImages.length && (
                         <motion.button
                             onClick={handleSkip}
                             initial={{ opacity: 0 }}
@@ -133,19 +95,8 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
                             Waiting too long? Click me to skip
                         </motion.button>
                     )}
-
-                    <div className="absolute bottom-4 text-muted-foreground text-center grid">
-                        <p>
-                            {loadedCount >= allImages.length
-                                ? typedText
-                                : `Loading Assets (${loadedCount}/${allImages.length})`}
-                        </p>
-                        <p className="text-xs">
-                            {loadedCount < allImages.length && "Optimizing assets for smooth performance"}
-                        </p>
-                    </div>
                 </motion.div>
             )}
         </AnimatePresence>
-    )
+    );
 }
