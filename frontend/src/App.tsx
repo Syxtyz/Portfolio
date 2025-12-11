@@ -5,6 +5,7 @@ import AchievementContent from "./components/achievement/main"
 import { useRef, useState } from "react"
 import { SplashScreen } from "./components/splash/splash"
 import MeetingContent from "./components/contact/main"
+import AboutContent from "./components/about/main"
 function App() {
   const [isReady, setIsReady] = useState(false)
   const achievementRef = useRef<HTMLDivElement | null>(null)
@@ -15,8 +16,9 @@ function App() {
           {!isReady && <SplashScreen onFinish={() => setIsReady(true)} />}
           <LandingContent scrollToAchievement={() => achievementRef.current?.scrollIntoView({ behavior: "smooth" })} />
           <div ref={achievementRef}>
-            <AchievementContent />
+            <AboutContent/>
           </div>
+            <AchievementContent />
           <MeetingContent/>
           <FooterContent />
       </div>

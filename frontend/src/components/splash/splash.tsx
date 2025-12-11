@@ -97,7 +97,7 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
                         }
                     }, 100)
                 }
-            }, 5600)
+            }, 3600)
         )
         return () => timers.forEach((t) => clearTimeout(t))
     }, [loadedCount, onFinish, allImages.length])
@@ -120,18 +120,6 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
                             playsInline
                             className="object-contain h-screen w-screen"
                         />
-                    )}
-
-                    {step === 3 && (
-                        <motion.h1
-                            initial={{ y: 25, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 1 }}
-                            className="text-white text-5xl font-bold mt-6"
-                        >
-                            Tweiqht
-                        </motion.h1>
                     )}
 
                     {showSkip && loadedCount !== allImages.length && (
