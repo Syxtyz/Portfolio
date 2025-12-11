@@ -54,7 +54,7 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
                         }, 40)
                     }, 1000)
                 }
-            }, 70)
+            }, 90)
 
             return () => clearInterval(interval)
         }
@@ -82,7 +82,6 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
         const timers: number[] = []
         timers.push(window.setTimeout(() => setStep(1), 100))
         timers.push(window.setTimeout(() => setStep(2), 3500))
-        timers.push(window.setTimeout(() => setStep(3), 3500))
         timers.push(
             window.setTimeout(() => {
                 if (loadedCount >= allImages.length) {
@@ -104,7 +103,7 @@ export function SplashScreen({ onFinish }: { onFinish: () => void }) {
 
     return (
         <AnimatePresence>
-            {step < 4 && (
+            {step < 3 && (
                 <motion.div
                     key="splash"
                     initial={{ opacity: 1 }}
