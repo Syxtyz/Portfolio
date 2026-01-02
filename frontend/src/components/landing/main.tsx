@@ -9,12 +9,12 @@ export default function LandingContent({ scrollToAchievement }: { scrollToAchiev
             <div className="grid items-center justify-center gap-4">
                 <div className="grid gap-4">
                     <div className="items-center flex flex-col">
-                        <p className="w-fit text-6xl md:text-8xl font-semibold z-2 relative font-loto">Tweiqht</p>
+                        <p className="w-fit text-6xl md:text-8xl font-semibold z-2 relative font-loto">Cejie Refamonte</p>
                         <p className="opacity-80 text-sm md:text-2xl relative top-1 font-Castoro">Software Developer</p>
                     </div>
                     <div>
                         <div className="border" />
-                        <p className="text-sm md:text-3xl opacity-80 relative -top-1.5 mx-2 font-loto">Cross-platform innovation for web and desktop</p>
+                        <p className="text-sm md:text-3xl opacity-80 relative -top-1.5 mx-2 font-loto text-center">Cross-platform innovation for web and desktop</p>
                     </div>
                 </div>
                 <Button variant={"outline"} className="cursor-pointer group gap-1 w-fit mx-auto" onClick={() => window.open(resume, "_blank")}>

@@ -6,7 +6,7 @@ export default function AboutContent() {
             <section>
                 <p className="text-2xl font-bold mb-1.5">About me</p>
                 <div className="grid gap-2">
-                    <p className="opacity-80">I am Cejie, a passionate explorer of technology. Whether it is building web apps, desktop/mobile apps, or diving into networking, I love exploring new technologies and turning ideas into reality.</p>
+                    <p className="opacity-80">I am <strong>Cejie Refamonte</strong>, a passionate explorer of technology. Whether it is building web apps, desktop/mobile apps, or diving into networking, I love exploring new technologies and turning ideas into reality.</p>
                     <p className="opacity-80">I thrive on exploring the latest tools, frameworks, and protocols, always looking for ways to challenge myself and grow.</p>
                     <p className="opacity-80">Currently, I’m a 3rd-year student pursuing Bachelor of Science in Information Technology, eager to apply my skills in practical projects and continue expanding my knowledge in the field.</p>
                     <p className="opacity-80">At the moment, I am focused on learning Next.js and actively seeking mentorship to accelerate my learning journey.</p>
